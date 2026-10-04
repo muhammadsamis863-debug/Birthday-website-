@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Little Surprise for Syeda 🎂</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        min-height: 100vh;
+        font-family: "Segoe UI", Arial, sans-serif;
+        background:
+            radial-gradient(circle at 20% 20%, rgba(255,255,255,.7), transparent 25%),
+            radial-gradient(circle at 80% 80%, rgba(255,180,210,.5), transparent 30%),
+            linear-gradient(135deg, #ffd6e7, #f5d9ff, #dce8ff);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        color: #332638;
+    }
+
+    /* Floating hearts */
+    .heart {
+        position: fixed;
+        bottom: -30px;
+        font-size: 20px;
+        opacity: .45;
+        animation: floatUp linear infinite;
+        pointer-events: none;
+    }
+
+    @keyframes floatUp {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+        15% {
+            opacity: .5;
+        }
+        100% {
+            transform: translateY(-110vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .container {
+        width: min(92%, 520px);
+        position: relative;
+        z-index: 5;
+    }
+
+    .card {
+        background: rgba(255,255,255,.78);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(255,255,255,.8);
+        border-radius: 28px;
+        padding: 38px 28px;
+        box-shadow: 0 25px 70px rgba(80,40,90,.18);
+        text-align: center;
+        min-height: 570px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        animation: cardIn .7s ease;
+    }
+
+    @keyframes cardIn {
+        from {
+            opacity: 0;
+            transform: translateY(25px) scale(.97);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .emoji {
+        font-size: 62px;
+        margin-bottom: 18px;
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%,100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+
+    h1 {
+        font-size: 32px;
+        margin-bottom: 16px;
+        color: #4b294e;
+    }
+
+    h2 {
+        font-size: 27px;
+        margin-bottom: 18px;
+        color: #4b294e;
+    }
+
+    p {
+        font-size: 17px;
+        line-height: 1.7;
+        color: #604c61;
+        margin-bottom: 25px;
+    }
+
+    .small {
+        font-size: 14px;
+        opacity: .7;
+    }
+
+    .highlight {
+        color: #d24b83;
+        font-weight: 700;
+    }
+
+    button {
+        width: 100%;
+        border: none;
+        padding: 15px 20px;
+        margin: 7px 0;
+        border-radius: 16px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        color: #fff;
+        background: linear-gradient(135deg, #d85b91, #a85acb);
+        box-shadow: 0 8px 20px rgba(180,70,130,.22);
+        transition: .25s ease;
+    }
+
+    button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(180,70,130,.3);
+    }
+
+    button:active {
+        transform: scale(.97);
+    }
+
+    .secondary {
+        background: rgba(255,255,255,.8);
+        color: #7b5575;
+        border: 1px solid rgba(150,100,150,.2);
+        box-shadow: none;
+    }
+
+    .gift {
+        font-size: 90px;
+        margin: 15px 0 25px;
+        animation: giftBounce 1.5s infinite;
+    }
+
+    @keyframes giftBounce {
+        0%,100% { transform: rotate(-4deg) scale(1); }
+        50% { transform: rotate(4deg) scale(1.08); }
+    }
+
+    .wish {
+        background: rgba(255,255,255,.65);
+        border-radius: 20px;
+        padding: 20px;
+        margin: 10px 0 25px;
+        text-align: left;
+    }
+
+    .wish p {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .progress {
+        position: absolute;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 6px;
+    }
+
+    .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #d9bfd4;
+        transition: .3s;
+    }
+
+    .dot.active {
+        width: 20px;
+        border-radius: 10px;
+        background: #d65b91;
+    }
+
+    .result {
+        margin-top: 15px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #b14c7c;
+        min-height: 25px;
+    }
+
+    .signature {
+        margin-top: 25px;
+        font-size: 14px;
+        opacity: .65;
+        font-style: italic;
+    }
+
+    @media(max-width:480px) {
+        .card {
+            padding: 35px 21px;
+            min-height: 590px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<div class="container">
+
+    <div class="card" id="card">
+
+        <div class="progress" id="progress"></div>
+
+        <!-- SCREEN 1 -->
+        <section id="screen1">
+
+            <div class="emoji">👀</div>
+
+            <h1>Hey Syeda...</h1>
+
+            <p>
+                It's your day. 🎂<br><br>
+                But before I wish you properly,
+                you have to complete a very important
+                <span class="highlight">investigation.</span> 😂
+            </p>
+
+            <button onclick="nextScreen(2)">
+                Okay... what investigation? 👀
+            </button>
+
+            <div class="signature">
+                Don't worry. It's completely harmless. Probably.
+            </div>
+
+        </section>
+
+
+        <!-- SCREEN 2 -->
+        <section id="screen2" style="display:none">
+
+            <div class="emoji">🕵️‍♀️</div>
+
+            <h2>Very Important Question</h2>
+
+            <p>
+                How difficult is it to compliment Syeda?
+            </p>
+
+            <button onclick="answer(1)">
+                Because she's too pretty 😌
+            </button>
+
+            <button onclick="answer(2)">
+                Because she already knows 😂
+            </button>
+
+            <button onclick="answer(3)">
+                Because her attitude gets in the way 💀
+            </button>
+
+            <button onclick="answer(4)">
+                All of the above
+            </button>
+
+            <div class="result" id="answerResult"></div>
+
+        </section>
+
+
+        <!-- SCREEN 3 -->
+        <section id="screen3" style="display:none">
+
+            <div class="emoji">😌</div>
+
+            <h2>Okay... I'll Be Serious</h2>
+
+            <p>
+                There are people who are beautiful because
+                of how they look...
+            </p>
+
+            <p>
+                And then there are people whose
+                <span class="highlight">personality</span>
+                makes them even more beautiful.
+            </p>
+
+            <p>
+                You're definitely the second kind, Syeda. ❤️
+            </p>
+
+            <p>
+                Although... I still haven't figured out how
+                someone can be this pretty
+                <strong>and</strong> this annoying
+                at the same time. 😂
+            </p>
+
+            <button onclick="nextScreen(4)">
+                Continue 👀
+            </button>
+
+        </section>
+
+
+        <!-- SCREEN 4 -->
+        <section id="screen4" style="display:none">
+
+            <div class="emoji">✨</div>
+
+            <h2>One More Thing...</h2>
+
+            <p>
+                You're beautiful, Syeda.
+            </p>
+
+            <p>
+                But the annoying part is that you probably
+                already know that. 😂
+            </p>
+
+            <p>
+                So I'll give you something you might not
+                hear as often...
+            </p>
+
+            <p>
+                Your <span class="highlight">personality</span>
+                makes your beauty even better. ❤️
+            </p>
+
+            <button onclick="nextScreen(5)">
+                Now give me my birthday wish 😌
+            </button>
+
+        </section>
+
+
+        <!-- SCREEN 5 -->
+        <section id="screen5" style="display:none">
+
+            <div class="emoji">🎂</div>
+
+            <h2>Happy Birthday, Syeda! ❤️</h2>
+
+            <div class="wish">
+
+                <p>
+                    I hope this new year of your life brings
+                    you peace, happiness, success and countless
+                    moments that genuinely make you smile.
+                    <br><br>
+                    Stay the same beautiful, strong,
+                    composed and slightly crazy person you are.
+                    😂
+                    <br><br>
+                    And yes...
+                    you're allowed to be extra special today.
+                    It's your birthday. 😌
+                </p>
+
+            </div>
+
+            <button onclick="nextScreen(6)">
+                Wait... is that all? 👀
+            </button>
+
+        </section>
+
+
+        <!-- SCREEN 6 -->
+        <section id="screen6" style="display:none">
+
+            <div class="gift">🎁</div>
+
+            <h2>Actually...</h2>
+
+            <p>
+                You thought that was everything?
+            </p>
+
+            <p>
+                I actually got something for you. 👀
+            </p>
+
+            <p>
+                Unfortunately...
+                this website can't deliver it. 😂
+            </p>
+
+            <button onclick="nextScreen(7)">
+                So where's my gift? 👀
+            </button>
+
+        </section>
+
+
+        <!-- SCREEN 7 -->
+        <section id="screen7" style="display:none">
+
+            <div class="emoji">🎁</div>
+
+            <h2>Well... That's The Problem 😂</h2>
+
+            <p>
+                You'll have to meet me so I can
+                actually give it to you.
+            </p>
+
+            <p>
+                So...
+            </p>
+
+            <h1>Birthday outing? 😌</h1>
+
+            <button onclick="yesClicked()">
+                YES 😌
+            </button>
+
+            <button class="secondary" onclick="thinkClicked()">
+                Let me think 🤔
+            </button>
+
+            <div class="result" id="finalResult"></div>
+
+        </section>
+
+
+        <!-- SCREEN 8 -->
+        <section id="screen8" style="display:none">
+
+            <div class="emoji">🥹</div>
+
+            <h2>Good Choice 😂</h2>
+
+            <p>
+                I knew you had excellent decision-making
+                skills. 😌
+            </p>
+
+            <p>
+                Your birthday gift is officially waiting
+                for you. 🎁
+            </p>
+
+            <p>
+                I'll tell you the plan separately.
+                No complicated website negotiations required. 😂
+            </p>
+
+            <div class="signature">
+                Happy Birthday once again, Syeda. ❤️
+            </div>
+
+        </section>
+
+
+        <!-- SCREEN 9 -->
+        <section id="screen9" style="display:none">
+
+            <div class="emoji">😌</div>
+
+            <h2>Fair Enough</h2>
+
+            <p>
+                Take your time.
+                No pressure. ❤️
+            </p>
+
+            <p>
+                Your gift is still waiting patiently. 🎁
+            </p>
+
+            <button onclick="nextScreen(1)">
+                Start Again 😂
+            </button>
+
+        </section>
+
+    </div>
+</div>
+
+
+<script>
+
+let currentScreen = 1;
+const totalScreens = 7;
+
+function createHearts() {
+
+    const container = document.getElementById("hearts");
+
+    const symbols = ["❤️","💕","✨","🌸","💗","♡"];
+
+    for(let i = 0; i < 20; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+        heart.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+
+        heart.style.left = Math.random()*100 + "%";
+        heart.style.animationDuration = (7 + Math.random()*8) + "s";
+        heart.style.animationDelay = Math.random()*8 + "s";
+        heart.style.fontSize = (12 + Math.random()*18) + "px";
+
+        container.appendChild(heart);
+    }
+}
+
+function updateProgress(screen) {
+
+    const progress = document.getElementById("progress");
+
+    if(screen === 1 || screen === 8 || screen === 9) {
+        progress.innerHTML = "";
+        return;
+    }
+
+    progress.innerHTML = "";
+
+    for(let i = 1; i <= 7; i++) {
+
+        const dot = document.createElement("div");
+
+        dot.className = "dot";
+
+        if(i <= screen - 1) {
+            dot.classList.add("active");
+        }
+
+        progress.appendChild(dot);
+    }
+}
+
+function nextScreen(number) {
+
+    const oldScreen = document.getElementById("screen" + currentScreen);
+    const newScreen = document.getElementById("screen" + number);
+
+    if(oldScreen) oldScreen.style.display = "none";
+
+    if(newScreen) {
+
+        newScreen.style.display = "block";
+
+        newScreen.style.animation = "none";
+
+        setTimeout(() => {
+            newScreen.style.animation = "cardIn .7s ease";
+        }, 10);
+    }
+
+    currentScreen = number;
+
+    updateProgress(number);
+}
+
+
+function answer(number) {
+
+    const result = document.getElementById("answerResult");
+
+    const responses = {
+
+        1: "Correct... but you're only telling half the truth. 😂",
+
+        2: "Exactly. That's what makes this investigation difficult. 😂",
+
+        3: "I was trying to be respectful... but yes. 😂",
+
+        4: "CORRECT. Case closed. You're guilty of all three. 😂"
+
+    };
+
+    result.innerHTML = responses[number];
+
+    setTimeout(() => {
+        nextScreen(3);
+    }, 1600);
+}
+
+
+function yesClicked() {
+
+    nextScreen(8);
+
+    confetti();
+
+}
+
+
+function thinkClicked() {
+
+    nextScreen(9);
+
+}
+
+
+function confetti() {
+
+    const symbols = ["🎉","❤️","💕","✨","🎂","🌸","🎁"];
+
+    for(let i=0; i<35; i++) {
+
+        const piece = document.createElement("div");
+
+        piece.innerHTML =
+            symbols[Math.floor(Math.random()*symbols.length)];
+
+        piece.style.position = "fixed";
+        piece.style.left = Math.random()*100 + "vw";
+        piece.style.top = "-30px";
+        piece.style.fontSize = (15 + Math.random()*20) + "px";
+        piece.style.zIndex = "100";
+        piece.style.pointerEvents = "none";
+
+        document.body.appendChild(piece);
+
+        const duration = 2000 + Math.random()*2000;
+
+        piece.animate([
+
+            {
+                transform: "translateY(0) rotate(0deg)",
+                opacity: 1
+            },
+
+            {
+                transform:
+                    "translateY(110vh) rotate(720deg)",
+                opacity: 0
+            }
+
+        ], {
+
+            duration: duration,
+            easing: "cubic-bezier(.2,.7,.3,1)"
+
+        });
+
+        setTimeout(() => {
+            piece.remove();
+        }, duration);
+    }
+}
+
+
+createHearts();
+updateProgress(1);
+
+</script>
+
+</body>
+</html>
